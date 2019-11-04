@@ -1,0 +1,75 @@
+<div class="modal fade modal-black" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+
+        <div class="modal-content" *ngIf="!register">
+            <div class="modal-header justify-content-center">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="tim-icons icon-simple-remove text-white"></i>
+                </button>
+                <div class="text-muted text-center ml-auto mr-auto">
+                    <h3 class="mb-0">Inicia Sesión</h3>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="btn-wrapper text-center" (click)="api.googleLogin()">
+                    <a href="#" class="btn btn-neutral btn-icon">
+                        <img src="assets/img/google.svg">
+                    </a>
+                </div>
+                <div class="text-center text-muted mb-4 mt-3">
+                    <small>Ingresa tus datos por favor</small>
+                </div>
+                <form role="form">
+                    <div class="form-group mb-3">
+                        <div class="input-group input-group-alternative">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="tim-icons icon-email-85"></i>
+                                </span>
+                            </div>
+                            <input #email class="form-control" placeholder="Email" type="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group-alternative">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="tim-icons icon-key-25"></i>
+                                </span>
+                            </div>
+                            <input #pass class="form-control" placeholder="Password" type="password">
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="form-check mt-3">
+                            <label class="form-check-label">Recuérdame </label>
+                            <input type="checkbox" name="checkbox" class="bootstrap-switch" checked/>
+                        </div>
+                        <button type="button" (click)="api.login(email.value, pass.value)" class="btn btn-primary my-4">Ingresar</button>
+                    </div>
+                </form>
+
+                <hr>
+
+                <div class="text-center">
+                    <small>¿No tienes cuenta aún?</small>
+                    <br>
+                    <button type="button" (click)="register=!register" class="btn btn-primary my-4">Registro</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-content" *ngIf="register">
+            <app-register></app-register>
+
+            <hr>
+
+            <div class="text-center">
+                <small>¿Ya tienes cuenta?</small>
+                <br>
+                <button type="button" (click)="register=!register" class="btn btn-primary my-4">Iniciar sesión</button>
+            </div>
+        </div>
+    </div>
+</div>

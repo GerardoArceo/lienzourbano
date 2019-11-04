@@ -1,0 +1,74 @@
+<div class="modal-header justify-content-center">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="tim-icons icon-simple-remove text-white"></i>
+        </button>
+    <div class="text-muted text-center ml-auto mr-auto">
+        <h3 class="mb-0">Registro</h3>
+    </div>
+</div>
+<div class="modal-body">
+    <div class="btn-wrapper text-center">
+        <a href="#" class="btn btn-neutral btn-icon">
+            <img src="assets/img/google.svg">
+        </a>
+    </div>
+    <div class="text-center text-muted mb-4 mt-3">
+        <small>Ingresa tus datos por favor</small>
+    </div>
+    <form role="form">
+        <div class="form-group">
+            <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="tim-icons icon-notes"></i>
+                    </span>
+                </div>
+                <input class="form-control" #name placeholder="Nombre" type="text">
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="tim-icons icon-email-85"></i>
+                    </span>
+                </div>
+                <input class="form-control" #email placeholder="Email" type="email">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="tim-icons icon-key-25"></i>
+                    </span>
+                </div>
+                <input class="form-control" #pass placeholder="Password" type="password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="tim-icons icon-map-big"></i>
+                    </span>
+                </div>
+                <input class="form-control" #address placeholder="Dirección" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="tim-icons icon-email-85"></i>
+                    </span>
+                </div>
+                <input class="form-control" #contact placeholder="Contacto" type="text">
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="button" (click)="register(name.value, email.value, pass.value, address.value, contact.value)" class="btn btn-primary my-4">Registrarme</button>
+        </div>
+    </form>
+</div>
