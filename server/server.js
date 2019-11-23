@@ -13,7 +13,7 @@ const app = express();
 // app.use(require('./routes/index'));
 
 // Serve static files....
-app.use(express.static(__dirname + '/dist/lienzourbano'));
+app.use(express.static(__dirname + '/../dist/lienzourbano'));
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -24,7 +24,7 @@ app.use(function(req, res, next) {
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/dist/lienzourbano/index.html'));
+    res.sendFile(path.join(__dirname + '/../dist/lienzourbano/index.html'));
 });
 
 // default Heroku PORT
