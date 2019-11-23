@@ -6,15 +6,13 @@
 
 <swal #swal background="#242C45" showCloseButton="true" showConfirmButton>
     <div *swalPortal>
-        <div *ngIf="!register">
-            <div class="modal-header justify-content-center">
-                <div class="text-muted text-center ml-auto mr-auto">
-                    <h3 class="mb-0">Mejores obras de arte</h3>
-                </div>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Mejores obras de arte</h3>
             </div>
-            <div class="modal-body">
-                <app-artworks [type]="'getTopArtworks'"></app-artworks>
-            </div>
+        </div>
+        <div class="modal-body">
+            <app-artworks [type]="'getTopArtworks'"></app-artworks>
         </div>
     </div>
 </swal>

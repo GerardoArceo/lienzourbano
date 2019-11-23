@@ -1,71 +1,69 @@
-<button *ngIf="!session" class="btn btn-warning" [swal]="swal">
+<button class="btn btn-warning" [swal]="swal">
     <i class="fas fa-user-astronaut"></i> Ingresar
 </button>
 
 <swal #swal background="#242C45" showCloseButton="true" showConfirmButton>
     <div *swalPortal>
-        <div *ngIf="!register">
-            <div class="modal-header justify-content-center">
-                <div class="text-muted text-center ml-auto mr-auto">
-                    <h3 class="mb-0">Inicia Sesión</h3>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="btn-wrapper text-center" (click)="api.googleLogin()">
-                    <a href="#" class="btn btn-neutral btn-icon">
-                        <img src="assets/img/google.svg">
-                    </a>
-                </div>
-                <div class="text-center text-muted mb-4 mt-3">
-                    <small>Ingresa tus datos por favor</small>
-                </div>
-                <form role="form">
-                    <div class="form-group mb-3">
-                        <div class="input-group input-group-alternative">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="tim-icons icon-email-85"></i>
-                                </span>
-                            </div>
-                            <input #email class="form-control" placeholder="Email" type="email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group input-group-alternative">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="tim-icons icon-key-25"></i>
-                                </span>
-                            </div>
-                            <input #pass class="form-control" placeholder="Password" type="password">
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <button type="button" data-dismiss="modal" (click)="api.login(email.value, pass.value)" class="btn btn-warning my-4">Ingresar</button>
-                    </div>
-                </form>
-
-                <hr>
-
-                <div class="text-center">
-                    <small>¿No tienes cuenta aún?</small>
-                    <br>
-                    <button type="button" (click)="register=!register" class="btn btn-primary my-4">Registro</button>
-                </div>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Inicia Sesión</h3>
             </div>
         </div>
+        <div class="modal-body">
+            <div class="btn-wrapper text-center" (click)="api.googleLogin()">
+                <a href="#" class="btn btn-neutral btn-icon">
+                    <img src="assets/img/google.svg">
+                </a>
+            </div>
+            <div class="text-center text-muted mb-4 mt-3">
+                <small>Ingresa tus datos por favor</small>
+            </div>
+            <form role="form">
+                <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                    <i class="tim-icons icon-email-85"></i>
+                                </span>
+                        </div>
+                        <input #email class="form-control" placeholder="Email" type="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                    <i class="tim-icons icon-key-25"></i>
+                                </span>
+                        </div>
+                        <input #pass class="form-control" placeholder="Password" type="password">
+                    </div>
+                </div>
 
-        <div *ngIf="register">
-            <app-register></app-register>
+                <div class="text-center">
+                    <button type="button" data-dismiss="modal" (click)="api.login(email.value, pass.value)" class="btn btn-warning my-4">Ingresar</button>
+                </div>
+            </form>
 
             <hr>
 
             <div class="text-center">
-                <small>¿Ya tienes cuenta?</small>
+                <small>¿No tienes cuenta aún?</small>
                 <br>
-                <button type="button" (click)="register=!register" class="btn btn-primary my-4">Iniciar sesión</button>
+                <button type="button" (click)="register=!register" class="btn btn-primary my-4">Registro</button>
             </div>
+        </div>
+    </div>
+
+    <div *ngIf="register">
+        <app-register></app-register>
+
+        <hr>
+
+        <div class="text-center">
+            <small>¿Ya tienes cuenta?</small>
+            <br>
+            <button type="button" (click)="register=!register" class="btn btn-primary my-4">Iniciar sesión</button>
         </div>
     </div>
 </swal>

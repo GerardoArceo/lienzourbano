@@ -95,19 +95,17 @@
 
 <swal #swalAuction background="#242C45" showCloseButton="true" showConfirmButton>
     <div *swalPortal>
-        <div *ngIf="!register">
-            <div class="modal-header justify-content-center">
-                <div class="text-muted text-center ml-auto mr-auto">
-                    <h3 class="mb-0">Poner arte en subasta</h3>
-                </div>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Poner arte en subasta</h3>
             </div>
-            <div class="modal-body">
-                <input #initialPrize class="form-control" placeholder="Precio inicial" type="number">
-                <input #duration class="form-control" placeholder="Duración (horas)" type="number">
-                <button (click)="addAuction(initialPrize.value, duration.value)" class="btn btn-simple btn-primary">
+        </div>
+        <div class="modal-body">
+            <input #initialPrize class="form-control" placeholder="Precio inicial" type="number">
+            <input #duration class="form-control" placeholder="Duración (horas)" type="number">
+            <button (click)="addAuction(initialPrize.value, duration.value)" class="btn btn-simple btn-primary">
                     <i class="tim-icons icon-bulb-63"></i> Subastar
                 </button>
-            </div>
         </div>
     </div>
 </swal>
