@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FunctionsService } from 'src/app/services/functions.service';
 import { ApiService } from 'src/app/services/api.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class NavbarComponent implements OnInit {
 
+  user: User;
   session: boolean;
 
   constructor(public functions: FunctionsService,
@@ -23,6 +25,7 @@ export class NavbarComponent implements OnInit {
   subscribeSession() {
     this.functions.getSessionEmitter().subscribe((s: any) => {
       if (s) {
+        this.user = s.id;
         this.session = true;
       } else {
         this.session = false;
@@ -34,11 +37,6 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.functions.closeSession();
     this.api.logout();
-  }
-
-  click() {
-    const user = this.api.user;
-    console.log(user);
   }
 
 }

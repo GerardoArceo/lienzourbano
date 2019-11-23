@@ -1,0 +1,36 @@
+<app-loading *ngIf="loading"></app-loading>
+<div *ngIf="!loading">
+    <div *ngFor="let c of categories" class="card" rel="tooltip" title="{{c.name}}">
+        <div *ngIf="c.artworks.length>0" id="id{{c.id}}" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner clickable">
+                <div *ngFor="let a of c.artworks; let i = index" (click)="openArtwork(a.idArtwork)" class="carousel-item" [ngClass]="{'active': i===0}">
+                    <img class="d-block w-100" [src]="a.image | image" alt="First slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#id{{c.id}}" role="button" data-slide="prev">
+                <i class="tim-icons icon-minimal-left"></i>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#id{{c.id}}" role="button" data-slide="next">
+                <i class="tim-icons icon-minimal-right"></i>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+        <div class="card-body">
+            <button type="button" (click)="openCategory(c.id, c.name)" [swal]="swal" class="btn btn-success btn-block">{{c.name}}</button>
+        </div>
+    </div>
+</div>
+
+<swal #swal background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">{{categoryName}}</h3>
+            </div>
+        </div>
+        <div class="modal-body">
+            <app-artworks [type]="'getArtworksCategory'" [id]="idCategory"></app-artworks>
+        </div>
+    </div>
+</swal>

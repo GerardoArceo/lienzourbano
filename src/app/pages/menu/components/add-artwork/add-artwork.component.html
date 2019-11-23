@@ -1,0 +1,67 @@
+<button [swal]="swal" class="btn btn-default menu">
+    <img alt="Lienzo Urbano" src="assets/img/menu/pintura-en-aerosol.png" width="140"/>
+    <h3>Agregar obra</h3>
+</button>
+<swal #swal background="#242C45" (open)="onOpen()" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div *ngIf="!register">
+            <div class="modal-header justify-content-center">
+                <div class="text-muted text-center ml-auto mr-auto">
+                    <h3 class="mb-0">Agregar obra</h3>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="text-center text-muted mb-4 mt-3">
+                    <small>Ingresa los datos de la obra por favor</small>
+                </div>
+                <form role="form">
+                    <div class="form-group mb-3">
+                        <div class="input-group input-group-alternative">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                            <input #name class="form-control" placeholder="Nombre" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group-alternative">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-address-card"></i>
+                                </span>
+                            </div>
+                            <textarea #description class="form-control" placeholder="Descripción" type="text"></textarea>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input class="form-control" #image type="file" accept="image/*" (change)="previewImage(image.files[0])" />
+                        <img *ngIf="imgUrl" class="d-block" [src]="imgUrl | image" alt="img">
+                    </div>
+                    <br><br><br>
+                    <div class="text-center">
+                        <div *ngIf="categories.length > 0">
+                            <select class="form-control" #category>
+                                <option *ngFor="let c of categories; let i = index">{{c.name}}</option>
+                            </select>
+                            <button (click)="addCategory(category.selectedIndex)" type="button" data-dismiss="modal" class="btn btn-default my-4">Agregar Categoría</button>
+                        </div>
+
+                        <p *ngFor="let c of categoriesSelected; let i = index" class="card-text">
+                            <span class="input-group-text">
+                                {{c.name}}
+                                <i type="button" (click)="delete_category(i)" class="fa fa-trash" style="position: absolute;right: 4px;"></i>
+                            </span>
+                        </p>
+
+                    </div>
+                    <br><br><br>
+                    <div class="text-center">
+                        <button (click)="addArtwork(name.value, description.value)" type="button" data-dismiss="modal" class="btn btn-warning my-4">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</swal>

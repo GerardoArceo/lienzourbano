@@ -1,0 +1,15 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="!loading && !artists">
+    <h2 *ngIf="type=='getFollows'">No sigues a ningún artista</h2>
+    <h2 *ngIf="type=='getFollowers'">No te sigue ningún usuario</h2>
+</div>
+
+<div *ngIf="!loading && artists">
+    <div *ngFor="let a of artists; let i = index">
+        <div class="container">
+            <br><br><br>
+            <app-user [idUser]="a.idArtist"></app-user>
+        </div>
+    </div>
+</div>

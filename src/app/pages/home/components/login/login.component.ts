@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FunctionsService } from '../../services/functions.service';
-import { ApiService } from '../../services/api.service';
+import { FunctionsService } from 'src/app/services/functions.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-login',

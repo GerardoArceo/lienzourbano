@@ -22,7 +22,6 @@ app.post('/login', [verificaToken], async(req, res) => {
     let pass = body.pass;
     let result = await executeAction('login', { email, pass }, {});
     let datos = result[1][0][0];
-    console.log(datos);
     if (datos != undefined) {
         token = jwt.sign({
             id: datos.id,

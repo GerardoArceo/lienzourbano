@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 export class FunctionsService {
 
   @Output() sessionEmitter: EventEmitter<{}> = new EventEmitter<{}>();
+  public user: User;
 
   constructor(private router: Router,
               private toastr: ToastrService,
@@ -29,15 +30,24 @@ export class FunctionsService {
 
   // SESSION
   saveSession(session: User) {
-    console.log(session);
     localStorage.setItem('session', JSON.stringify(session));
     this.sessionEmitter.emit(session);
+    this.user = session;
   }
 
-  getSession(): User {
+  getSession() {
     const s = localStorage.getItem('session');
     if (s) {
       return JSON.parse(s);
+    } else {
+      return null;
+    }
+  }
+
+  getUser(): User {
+    const s = this.getSession();
+    if (s) {
+      return new User(s);
     } else {
       return null;
     }
@@ -47,6 +57,7 @@ export class FunctionsService {
     localStorage.clear();
     this.toastAlert({title: 'OK', text: 'Sesión cerrada', type: 'info'});
     this.sessionEmitter.emit(null);
+    this.navigate('home');
   }
 
   activeSessionEmitter() {
@@ -58,18 +69,19 @@ export class FunctionsService {
   }
 
 
-  // REDIRECTS
-  redirectPiase() {
-    this.router.navigate (['/piase']);
+  getTodayDate() {
+    return new Date().toISOString().split('T')[0];
   }
 
-  redirectMenu() {
-    if (this.getSession().access === 1) {
-      this.router.navigate (['/menu-student']);
-    } else {
-      this.router.navigate (['/menu']);
-    }
+  getTime() {
+    return new Date().toLocaleTimeString();
   }
+
+  getTimestamp() {
+    return this.getTodayDate() + ' ' + this.getTime();
+  }
+
+  // REDIRECTS
 
   navigate(route: string, queryParams?: any) {
     this.router.navigate(['/' + route], { queryParams });

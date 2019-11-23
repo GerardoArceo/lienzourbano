@@ -1,31 +1,29 @@
 export class User {
 
-    constructor(private token: string,
-                public id: number = null,
-                public name: string = null,
-                public lastName: string = null,
-                public email: string = null,
-                public pass: string = null,
-                public address: string = null,
-                public contactNumber: string = null,
-                public birthdate: string = null,
-                public access: number = null) {
+    private token: string;
+    public id: number;
+    public name: string;
+    public email: string;
+    public pass: string;
+    public address: string;
+    public contact: string;
+    public photo: string;
+    public access: number;
+
+    constructor(json) {
+        this.token = json.token;
+        this.id = json.id;
+        this.name = json.name;
+        this.email = json.email;
+        this.pass = json.pass;
+        this.address = json.address;
+        this.contact = json.contact;
+        this.photo = json.photo;
+        this.access = json.access;
     }
 
     getToken(): string {
         return this.token;
-    }
-
-    update() {
-
-    }
-
-    addFavorite() {
-
-    }
-
-    addFollow() {
-
     }
 
 }

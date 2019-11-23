@@ -12,7 +12,8 @@ app.post('/API', verificaToken, async(req, res) => {
     let accion = body.accion;
     let params = body.params;
     // info aportada por el JWT
-    let data = { idPersona: req.idPersona, idTipo: req.idTipo };
+    let data = { idUser: req.id, access: req.access };
+    console.log(data);
     let result = await executeAction(accion, params, data);
     res.json(result);
 });
@@ -27,13 +28,6 @@ app.get('/API', (req, res) => {
     res.json({
         data
     });
-});
-
-app.head('/', (req, res) => {
-
-    console.log('asd');
-    res.send('asd');
-
 });
 
 module.exports = app;

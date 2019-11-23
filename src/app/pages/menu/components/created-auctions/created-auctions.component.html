@@ -1,0 +1,32 @@
+<button [swal]="auctionsArtist" class="btn btn-default menu">
+    <img alt="Lienzo Urbano" src="assets/img/menu/subasta.png" width="140"/>
+    <h3>Subastas creadas</h3>
+</button>
+
+<swal (open)="onOpen()" #auctionsArtist background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Subastas creadas</h3>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div *ngFor="let a of auctions">
+                <div class="card clickable" rel="tooltip" (click)="openArtwork(a.idArtwork)" title="{{a.title}}">
+                    <img class="d-block w-100" [src]="a.image | image" alt="First slide">
+                    <div class="card-body">
+                        <h2>{{a.title}}</h2>
+                        <h3>Vendida en ${{a.actualPrize}}</h3>
+                        <p class="lead">
+                            Subasta cerrada el {{a.closeDate.split('T')[0]}}
+                        </p>
+                    </div>
+                </div>
+                <h2>Comprador</h2><br><br>
+                <app-user [idUser]="a.idArtist"></app-user>
+
+                <br><br><br><br>
+            </div>
+        </div>
+    </div>
+</swal>

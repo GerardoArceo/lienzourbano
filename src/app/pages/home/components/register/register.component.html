@@ -1,14 +1,11 @@
 <div class="modal-header justify-content-center">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            <i class="tim-icons icon-simple-remove text-white"></i>
-        </button>
     <div class="text-muted text-center ml-auto mr-auto">
         <h3 class="mb-0">Registro</h3>
     </div>
 </div>
 <div class="modal-body">
     <div class="btn-wrapper text-center">
-        <a href="#" class="btn btn-neutral btn-icon">
+        <a href="#" class="btn btn-neutral btn-icon" (click)="api.googleRegister()">
             <img src="assets/img/google.svg">
         </a>
     </div>
@@ -68,7 +65,7 @@
         </div>
 
         <div class="text-center">
-            <button type="button" (click)="register(name.value, email.value, pass.value, address.value, contact.value)" class="btn btn-primary my-4">Registrarme</button>
+            <button data-dismiss="modal" type="button" (click)="register(name.value, email.value, pass.value, address.value, contact.value)" class="btn btn-warning my-4">Registrarme</button>
         </div>
     </form>
 </div>

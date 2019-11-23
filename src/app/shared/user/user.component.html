@@ -1,0 +1,53 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="!loading" class="card card-coin card-plain">
+    <div class="card-header">
+        <img [src]="user.photo | image" class="img-center img-fluid rounded-circle">
+        <h4 class="title">{{user?.name}}</h4>
+    </div>
+    <div class="card-body">
+        <ul class="nav nav-tabs nav-tabs-primary justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#linka">
+                    Datos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#linkb">
+                    Obras
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content tab-subcategories">
+            <div class="tab-pane active" id="linka">
+                <h3><strong>Email: </strong> {{user?.email}}</h3>
+                <br>
+                <h3><strong>Contacto: </strong> {{user?.contact}}</h3>
+                <br>
+                <button class="btn btn-warning" [swal]="swalChat">Chat</button>
+            </div>
+
+            <div class="tab-pane" id="linkb">
+                <div class="row">
+                    <app-artworks [type]="'getArtworksArtist'" [id]="user.id"></app-artworks>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<swal #swalChat background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div *ngIf="!register">
+            <div class="modal-header justify-content-center">
+                <div class="text-muted text-center ml-auto mr-auto">
+                    <h3 class="mb-0">Chat</h3>
+                </div>
+            </div>
+            <div class="modal-body">
+                <app-chat [idArtist]="user.id"></app-chat>
+            </div>
+        </div>
+    </div>
+</swal>

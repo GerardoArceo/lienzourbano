@@ -1,0 +1,20 @@
+<li data-toggle="collapse" class="nav-item p-0 clickable" [swal]="swal">
+    <a class="nav-link" rel="tooltip" title="Mejores obras de arte">
+        <i class="fas fa-heart"></i> Top
+    </a>
+</li>
+
+<swal #swal background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div *ngIf="!register">
+            <div class="modal-header justify-content-center">
+                <div class="text-muted text-center ml-auto mr-auto">
+                    <h3 class="mb-0">Mejores obras de arte</h3>
+                </div>
+            </div>
+            <div class="modal-body">
+                <app-artworks [type]="'getTopArtworks'"></app-artworks>
+            </div>
+        </div>
+    </div>
+</swal>

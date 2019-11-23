@@ -16956,7 +16956,7 @@ textarea.form-control:active {
         width: 350px;
     }
     .profile-page .page-header {
-        max-height: unset;
+        min-height: 900px;
     }
     .landing-page .page-header h1 {
         margin-top: 100px;
@@ -19720,7 +19720,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 
 .bootstrap-datetimepicker-widget.dropdown-menu .timepicker-picker .table-condensed .btn[data-action="togglePeriod"]:hover,
 .bootstrap-datetimepicker-widget.dropdown-menu .timepicker-picker .table-condensed .separator {
-    color: #9A9A9A !important;
+    color: #FFFFFF !important;
 }
 
 .bootstrap-datetimepicker-widget.dropdown-menu .table-condensed .month,

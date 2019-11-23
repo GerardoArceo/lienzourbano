@@ -1,0 +1,124 @@
+<div class="wrapper">
+    <div class="main">
+        <div class="section">
+            <div class="container">
+
+                <div class="text-center menu">
+
+                    <div *ngIf="artistMode">
+                        <button (click)="artistMode=!artistMode" type="button" class="btn btn-warning my-4">Cambiar a modo usuario</button>
+                        <h1>Modo Artista</h1>
+                    </div>
+
+                    <div *ngIf="!artistMode">
+                        <button (click)="artistMode=!artistMode" type="button" class="btn btn-primary my-4">Cambiar a modo artista</button>
+                        <h1>Modo Usuario</h1>
+                    </div>
+
+                    <div *ngIf="!artistMode" class="animated fadeInDown">
+                        <button [swal]="follows" class="btn btn-default menu">
+                            <img alt="Lienzo Urbano" src="assets/img/menu/seguidos.png" width="140"/>
+                            <h3>Artistas seguidos</h3>
+                        </button>
+
+                        <button [swal]="favorites" class="btn btn-default menu">
+                            <img alt="Lienzo Urbano" src="assets/img/menu/favoritos.png" width="140"/>
+                            <h3>Favoritos</h3>
+                        </button>
+
+                        <button [swal]="wonAuctions" class="btn btn-default menu">
+                            <img alt="Lienzo Urbano" src="assets/img/menu/subasta.png" width="140"/>
+                            <h3>Subastas ganadas</h3>
+                        </button>
+                    </div>
+
+                    <div *ngIf="artistMode" class="animated fadeInDown">
+                        <app-add-artwork></app-add-artwork>
+
+                        <button [swal]="owns" class="btn btn-default menu">
+                            <img alt="Lienzo Urbano" src="assets/img/menu/mis-obras.png" width="140"/>
+                            <h3>Mis obras</h3>
+                        </button>
+
+                        <button [swal]="followers" class="btn btn-default menu">
+                            <img alt="Lienzo Urbano" src="assets/img/menu/seguidores.png" width="140"/>
+                            <h3>Seguidores</h3>
+                        </button>
+
+                        <app-created-auctions></app-created-auctions>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<app-back></app-back>
+
+<swal #follows background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div *ngIf="!register">
+            <div class="modal-header justify-content-center">
+                <div class="text-muted text-center ml-auto mr-auto">
+                    <h3 class="mb-0">Artistas seguidos</h3>
+                </div>
+            </div>
+            <div class="modal-body container wrapper">
+                <app-users [type]="'getFollows'"></app-users>
+            </div>
+        </div>
+    </div>
+</swal>
+
+<swal #followers background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Usuarios que te siguen</h3>
+            </div>
+        </div>
+        <div class="modal-body container wrapper">
+            <app-users [type]="'getFollowers'"></app-users>
+        </div>
+    </div>
+</swal>
+
+<swal #favorites background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Obras favoritas</h3>
+            </div>
+        </div>
+        <div class="modal-body">
+            <app-artworks [type]="'getFavorites'"></app-artworks>
+        </div>
+    </div>
+</swal>
+
+<swal #owns background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Mis obras publicadas</h3>
+            </div>
+        </div>
+        <div class="modal-body">
+            <app-artworks [type]="'getArtworksArtist'" [id]="user.id"></app-artworks>
+        </div>
+    </div>
+</swal>
+
+<swal #wonAuctions background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Subastas ganadas</h3>
+            </div>
+        </div>
+        <div class="modal-body">
+            <app-artworks [type]="'getWonAuctions'" [id]="user.id"></app-artworks>
+        </div>
+    </div>
+</swal>

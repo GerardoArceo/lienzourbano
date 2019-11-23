@@ -1,0 +1,14 @@
+<div class="chat-window">
+    <app-loading *ngIf="loading"></app-loading>
+    <div class="app-mensajes" id="appMensajes">
+        <div *ngIf="!loading">
+            <div *ngFor="let chat of api.chats" [ngClass]="user.id == chat.idSender ? 'text-right' : 'text-left'">
+                <span class="badge" [ngClass]="{'badge-primary': user.id == chat.idSender, 'badge-success': user.id != chat.idSender}">{{chat.name}}</span>
+                <p>{{chat.message}}</p>
+                <small class="text-muted">{{chat.date}}</small>
+                <br>
+            </div>
+            <input type="text" id="input" name="mensaje" [(ngModel)]="mensaje" placeholder="Enviar mensaje" (keyup.enter)="enviarMensaje()" class="form-control">
+        </div>
+    </div>
+</div>

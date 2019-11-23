@@ -1,0 +1,113 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="profile-page">
+    <div class="wrapper">
+        <div class="page-header">
+            <img src="assets/img/dots.png" class="dots">
+            <img src="assets/img/path4.png" class="path">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-md-6">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item active">
+                                        <img class="d-block" [src]="artwork?.image | image" alt="First slide">
+                                        <div class="carousel-caption d-none d-md-block">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <h1 class="profile-title text-left">{{artwork?.title}}</h1>
+                        <h5 class="text-on-back">01</h5>
+                        <p class="profile-description text-left">{{artwork?.description}}</p>
+                        <div class="btn-wrapper pt-3">
+                            <button *ngIf="show" (click)="addFavoriteArtwork()" class="btn btn-simple btn-primary">
+                                <i class="tim-icons icon-bulb-63"></i> Agregar a favoritos!
+                            </button>
+                            <button *ngIf="!show" [swal]="swalAuction" class="btn btn-simple btn-primary">
+                                <i class="tim-icons icon-bulb-63"></i> Poner en subasta!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section container align-items-center">
+            <div class="row" *ngIf="show">
+                <div class="col-lg-6 col-md-6">
+                    <h1 class="profile-title text-left">Artista</h1>
+                    <h5 class="text-on-back">02</h5>
+                    <div class="btn-wrapper profile pt-3">
+                        <button *ngIf="show" (click)="addFollower()" class="btn btn-simple btn-primary">
+                            <i class="tim-icons icon-heart-2"></i> Seguir
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                    <app-user [idUser]="artwork?.idArtist"></app-user>
+                </div>
+            </div>
+            <div class="row" *ngIf="!show">
+                <div class="col-lg-6 col-md-6">
+                    <h1 class="profile-title text-left">Obra propia</h1>
+                    <h5 class="text-on-back">02</h5>
+                </div>
+            </div>
+        </div>
+
+
+
+        <section class="section">
+            <div class="container">
+
+                <div class="row">
+                    <div class="card card-plain">
+                        <div class="card-header">
+                            <h1 class="profile-title text-left">Comentarios</h1>
+                            <h5 class="text-on-back">03</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-columns">
+                                <div class="card" *ngFor="let c of comments" rel="tooltip">
+                                    <p class="card-text">{{c?.comment}}</p>
+                                </div>
+                            </div>
+                            <form>
+                                <div class="form-group">
+                                    <textarea #comment type="text" class="form-control" placeholder="Sublime!"></textarea>
+                                </div>
+                                <button (click)="addComment(comment.value)" type="submit" class="btn btn-primary btn-round float-right" rel="tooltip" data-original-title="Agregar comentario" data-placement="right">Comentar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<app-back></app-back>
+
+<swal #swalAuction background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div *ngIf="!register">
+            <div class="modal-header justify-content-center">
+                <div class="text-muted text-center ml-auto mr-auto">
+                    <h3 class="mb-0">Poner arte en subasta</h3>
+                </div>
+            </div>
+            <div class="modal-body">
+                <input #initialPrize class="form-control" placeholder="Precio inicial" type="number">
+                <input #duration class="form-control" placeholder="Duración (horas)" type="number">
+                <button (click)="addAuction(initialPrize.value, duration.value)" class="btn btn-simple btn-primary">
+                    <i class="tim-icons icon-bulb-63"></i> Subastar
+                </button>
+            </div>
+        </div>
+    </div>
+</swal>

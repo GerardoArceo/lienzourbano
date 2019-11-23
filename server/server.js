@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'dev') {
     https.createServer({
         key: fs.readFileSync('/etc/ssl/private/private.key'),
         cert: fs.readFileSync('/etc/ssl/private/certificate.crt')
-    }, app).listen(3000);
+    }, app).listen(3001);
 }
 console.log(`SERVER IS LISTENING: 
 NODE_ENV: ${process.env.NODE_ENV} 

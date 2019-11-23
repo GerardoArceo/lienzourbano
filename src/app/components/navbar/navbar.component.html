@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="100">
     <div class="container">
         <div class="navbar-translate">
-            <a (click)="click()" class="navbar-brand" rel="tooltip" title="Transforma tu ciudad" data-placement="bottom" target="_blank">
+            <a routerLink="home" class="navbar-brand" rel="tooltip" title="Transforma tu ciudad" data-placement="bottom">
                 <span>Lienzo Urbano</span>
             </a>
             <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,32 +17,39 @@
                         <a>Lienzo Urbano</a>
                     </div>
                     <div class="col-6 collapse-close text-right">
-                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index">
                           <i class="tim-icons icon-simple-remove"></i>
                         </button>
                     </div>
                 </div>
             </div>
             <ul class="navbar-nav">
-                <li class="nav-item p-0" *ngIf="session">
+                <app-top></app-top>
+                <li routerLink="auctions" data-toggle="collapse" class="nav-item p-0 clickable">
+                    <a class="nav-link" rel="tooltip" title="Comprar obras en subasta">
+                        <i class="fas fa-dollar-sign"></i> Subastas
+                    </a>
+                </li>
+                <app-search></app-search>
+                <li routerLink="menu" data-toggle="collapse" class="nav-item p-0 clickable" *ngIf="session" data-target="#navigation">
                     <a class="nav-link" rel="tooltip" title="Acceder al menú">
                         <i class="fas fa-user-astronaut"></i> Menú
                     </a>
                 </li>
 
                 <li class="dropdown nav-item" *ngIf="session">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle nav-link clickable" data-toggle="dropdown">
                         <i class="fa fa-cogs d-lg-none d-xl-none"></i>
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
-                        <a class="dropdown-item">
-                            <i class="tim-icons icon-paper"></i> Perfil
+                        <a [swal]="profile" class="dropdown-item clickable" data-toggle="collapse" data-target="#navigation">
+                            <i class="fas fa-user"></i> Perfil
                         </a>
-                        <a class="dropdown-item">
-                            <i class="tim-icons icon-bullet-list-67"></i> Configuración
+                        <a [swal]="config" class="dropdown-item clickable" data-toggle="collapse" data-target="#navigation">
+                            <i class="fas fa-edit"></i> Configuración
                         </a>
-                        <a class="dropdown-item" (click)="logout()">
-                            <i class="tim-icons icon-image-02"></i> Cerrar Sesión
+                        <a class="dropdown-item clickable" data-toggle="collapse" data-target="#navigation" (click)="logout()">
+                            <i class="fas fa-door-closed"></i> Cerrar Sesión
                         </a>
                     </div>
                 </li>
@@ -50,3 +57,29 @@
         </div>
     </div>
 </nav>
+
+<swal #profile background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Mi perfil</h3>
+            </div>
+        </div>
+        <div class="modal-body">
+            <app-user [idUser]="user.id"></app-user>
+        </div>
+    </div>
+</swal>
+
+<swal #config background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div class="modal-header justify-content-center">
+            <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Configuración</h3>
+            </div>
+        </div>
+        <div class="modal-body">
+            Sin configuración por el momento
+        </div>
+    </div>
+</swal>

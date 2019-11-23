@@ -4,7 +4,7 @@ const getQuery = require('./funciones');
 
 let pool;
 let datosConexion = {
-    connectionLimit: 1,
+    connectionLimit: 10,
     host: '127.0.0.1',
     port: process.env.PORT_DB,
     user: process.env.USER_DB,

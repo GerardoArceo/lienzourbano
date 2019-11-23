@@ -8,8 +8,8 @@ let verificaToken = (req, res, next) => {
     let token = req.body.token || req.query.token; //Recibe token de POST o GET
     jwt.verify(token, process.env.SEED, (err, decoded) => {
         if (!err) {
-            req.idTipo = decoded.idTipo;
-            req.idPersona = decoded.idPersona;
+            req.access = decoded.access;
+            req.id = decoded.id;
         }
         next();
     });

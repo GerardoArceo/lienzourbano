@@ -1,0 +1,37 @@
+<div class="profile-page">
+    <div class="wrapper">
+        <div class="page-header">
+            <img src="assets/img/dots.png" class="dots">
+            <img src="assets/img/path4.png" class="path">
+            <div class="container">
+                <div class="text-center menu">
+
+                    <h2>Subastas</h2>
+
+                    <app-loading *ngIf="loading"></app-loading>
+
+                    <div *ngIf="artworks.length < 1">
+                        <h2>No hay subastas de arte en este momento</h2>
+                    </div>
+
+                    <div class="card-columns" *ngIf="artworks.length > 0">
+                        <div class="card" *ngFor="let a of artworks; let i = index" rel="tooltip" title="{{a.title}}">
+                            <img clickable class="d-block w-100" [src]="a.image | image" alt="First slide" (click)="openArtwork(a.idArtwork)">
+                            <div class="card-body">
+                                <h2>
+                                    Precio actual: ${{a.actualPrize}}
+                                </h2>
+                                <input #cantidad class="form-control" placeholder="Dinero a ofrecer" type="number">
+                                <button (click)="updateAuction(i, cantidad.value)" class="btn btn-simple btn-primary">
+                                    <i class="tim-icons icon-bulb-63"></i> Pujar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-back></app-back>

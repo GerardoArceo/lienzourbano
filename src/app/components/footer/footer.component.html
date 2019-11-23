@@ -4,8 +4,12 @@
             <div class="col-md-3">
                 <h1 class="title">Lienzo Urbano</h1>
 
-                <button class="btn btn-primary btn-round" type="button">
+                <button routerLink="info" class="btn btn-primary btn-round" type="button">
                     <i class="tim-icons icon-heart-2"></i> ¿Quiénes somos?
+                </button>
+                <br>
+                <button [swal]="privacy" routerLink="privacy" class="btn btn-warning btn-round" type="button">
+                    <i class="tim-icons icon-atom"></i> Política de privacidad
                 </button>
             </div>
             <div class="col-md-3">
@@ -16,7 +20,7 @@
                     <a target="_blank" href="https://twitter.com/" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Síguenos en Twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a target="_blank" href="https://www.facebook.com/" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Danos Like en Facebook">
+                    <a target="_blank" href="https://www.facebook.com/Lienzo-Urbano-399847683716963/" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Danos Like en Facebook">
                         <i class="fab fa-facebook-square"></i>
                     </a>
                     <a target="_blank" href="https://instagram.com/" class="btn btn-icon btn-neutral  btn-round btn-simple" data-toggle="tooltip" data-original-title="Síguenos en Instagram">
@@ -27,3 +31,36 @@
         </div>
     </div>
 </footer>
+
+<swal #privacy background="#242C45" showCloseButton="true" showConfirmButton>
+    <div *swalPortal>
+        <div *ngIf="!register">
+            <div class="modal-header justify-content-center">
+                <div class="text-muted text-center ml-auto mr-auto">
+                    <h3 class="mb-0">Política de privacidad</h3>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p class="lead"> Lienzo Urbano es una plataforma de difusión artística, no se hace responsable de las obras de arte publicadas y/o las consecuencias de su difusión
+                    <br> Asimismo, Lienzo Urbano se deslinda de la protección de la propiedad intelectual de cualquier contenido difundido a través de él, pues no es una institución certificada para proteger legalmente los derechos artísticos de cada
+                    obra.
+                </p>
+                <br><br>
+                <h3>¿Quieres proteger legalmente tus obras?</h3>
+                <p class="lead">
+                    Entra al portal web del Instituto Nacional del Derecho de Autor y sigue el trámite correspondiente.
+                    <br> OJO: Tendrás que ir físicamente a sus oficinas a entregar el papeleo solicitado.
+                </p>
+                <a href="https://indautor.gob.mx/tramites-y-requisitos/registro/obra_pictorica.html" target="_blank">
+                    <button class="btn btn-warning">Registro de obra</button>
+                </a>
+                <br><br>
+                <small>
+                    Developed by Liberato Software
+                    <br>
+                    Designed by Creative Tim
+                </small>
+            </div>
+        </div>
+    </div>
+</swal>
