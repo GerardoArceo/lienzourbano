@@ -3,11 +3,12 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "node server/server",
-        "build": "ng build --prod",
+        "start": "node server.js",
+        "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "postinstall": "ng build --aot --prod"
     },
     "private": true,
     "dependencies": {
@@ -55,7 +56,11 @@
         "tslint": "~5.15.0",
         "typescript": "~3.4.3"
     },
-    "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.",
+    "engines": {
+        "node": "~12.4.0",
+        "npm": "~6.9.0"
+    },
+    "description": "LU",
     "main": "karma.conf.js",
     "author": "",
     "license": "ISC"
