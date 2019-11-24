@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(require('./routes/index'));
 
 // Serve static files....
-app.use(express.static(__dirname + '/../dist/lienzoUrbano'));
+// app.use(express.static(__dirname + '/../dist/lienzoUrbano'));
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -22,10 +22,10 @@ app.use(function(req, res, next) {
     next();
 });
 
-// Send all requests to index.html
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/../dist/lienzoUrbano/index.html'));
-});
+// // Send all requests to index.html
+// app.get('/', function(req, res) {
+//     res.sendFile(path.join(__dirname + '/../dist/lienzoUrbano/index.html'));
+// });
 
 // default Heroku PORT
 app.listen(process.env.PORT || 3000);
