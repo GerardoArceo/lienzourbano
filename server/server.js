@@ -6,11 +6,11 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json({ limit: '10mb', extended: true }));
-// app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '10mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
-// app.use(require('./routes/index'));
+app.use(require('./routes/index'));
 
 // Serve static files....
 app.use(express.static(__dirname + '/../dist/lienzoUrbano'));
@@ -23,7 +23,7 @@ app.use(function(req, res, next) {
 });
 
 // Send all requests to index.html
-app.get('/*', function(req, res) {
+app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/../dist/lienzoUrbano/index.html'));
 });
 

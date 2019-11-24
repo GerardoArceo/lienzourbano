@@ -24,7 +24,7 @@ export class ApiService {
               public afAuth: AngularFireAuth,
               private afs: AngularFirestore) {
 
-    this.URL_API = 'https://piase.mx:3001/';
+    this.URL_API = 'https://lienzourbano.herokuapp.com/';
     if (isDevMode()) {
       this.URL_API = 'http://localhost:3000/';
     }
