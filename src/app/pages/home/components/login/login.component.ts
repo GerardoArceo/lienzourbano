@@ -13,8 +13,13 @@ export class LoginComponent implements OnInit {
 
   constructor(public functions: FunctionsService,
               public api: ApiService) {
-}
+  }
 
   ngOnInit() {}
+
+  f() {
+    this.register = !this.register;
+    console.log(this.register);
+  }
 
 }

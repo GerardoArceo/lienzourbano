@@ -25,9 +25,9 @@ export class ApiService {
               private afs: AngularFirestore) {
 
     this.URL_API = 'https://lienzourbano.herokuapp.com/';
-    // if (isDevMode()) {
-    //   this.URL_API = 'http://localhost:3000/';
-    // }
+    if (isDevMode()) {
+      this.URL_API = 'http://localhost:3000/';
+    }
   }
 
   async executeAction(accion: string, params?: {}) {
