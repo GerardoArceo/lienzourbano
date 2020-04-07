@@ -13,7 +13,7 @@ export class Artwork {
                 public image: string = null,
                 public publicationDate: string = null) {
     }
-
+    
     openArtwork(idArtwork) {
         this.functions.navigate('artwork', {idArtwork});
     }
